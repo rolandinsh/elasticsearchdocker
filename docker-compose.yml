@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    container_name: es
+    environment:
+     - discovery.type=single-node
+     - bootstrap.memory_lock=true
+     - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+# HOST:CONTAINER
+# https://docs.docker.com/compose/compose-file/#ports
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    restart: unless-stopped
+    networks:
+      - esnet
+volumes:
+  esdata1:
+    driver: local
+networks:
+  esnet:
