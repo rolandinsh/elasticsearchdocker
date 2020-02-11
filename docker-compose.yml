@@ -9,6 +9,7 @@ services:
      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
 # https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-users.html#bootstrap-elastic-passwords
 #     - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+#     - ELASTICSEARCH_USERNAME: $ELASTIC_USER
     ulimits:
       memlock:
         soft: -1
